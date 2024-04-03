@@ -18,14 +18,42 @@ public final class RaycasterPanel extends JPanel {
      * Number of rays to fire from the camera.
      */
     private final int RESOLUTION;
+    private final Color myColor = new Color(128, 128, 128, 255);
+    private RectangleObject[] OuterWalls;
+    private RectangleObject[] InnerWalls;
+    private CircleObject[] CircleObject;
 
     public RaycasterPanel(final RaycasterRunner raycasterRunner) {
         this.RUNNER = raycasterRunner;
         this.setPreferredSize(new Dimension(this.RUNNER.getWidth() / 2, this.RUNNER.getHeight()));
         this.RESOLUTION = this.getPreferredSize().width;
         this.requestFocusInWindow(true);
-    }
+        OuterWalls = new RectangleObject[4];
+        InnerWalls = new RectangleObject[2];
+        CircleObject = new CircleObject[2];
+        OuterWalls[0] = new RectangleObject(0, 0, 25, 640, Color.BLACK);
+        OuterWalls[1] = new RectangleObject(0, 0,640, 25, Color.BLACK);
+        OuterWalls[2] = new RectangleObject(615, 0, 25, 640, Color.BLACK);
+        OuterWalls[3] = new RectangleObject(0, 615, 640, 25, Color.BLACK);
+        InnerWalls[0] = new RectangleObject(100,25,25, 200, Color.BLACK);
+        InnerWalls[1] = new RectangleObject(295,415,25, 200, Color.BLACK);
+        CircleObject[1] = new CircleObject(520,100,30, Color.BLACK);
 
+    }
+    public void drawEnvironment(Graphics2D g2d) {
+        for (RectangleObject Outer : OuterWalls) {
+            if (Outer != null)
+                Outer.drawObject(g2d);
+        }
+        for (RectangleObject Inner : InnerWalls) {
+            if (Inner != null)
+                Inner.drawObject(g2d);
+        }
+        for (CircleObject Circle : CircleObject) {
+            if (Circle != null)
+                Circle.drawObject(g2d);
+        }
+    }
     public void update() {
     }
 
@@ -33,7 +61,8 @@ public final class RaycasterPanel extends JPanel {
     public void paintComponent(final Graphics g) {
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g;
-        g2d.setColor(Color.RED);
+        g2d.setColor(myColor);
         g2d.fillRect(0, 0, this.getWidth(), this.getHeight());
+        drawEnvironment(g2d);
     }
 }

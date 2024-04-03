@@ -35,7 +35,7 @@ public final class RaycasterRunner extends SwingApplication {
     /**
      * Title of the JFrame.
      */
-    private static final String TITLE = "Raycaster";
+    private static final String TITLE = "Raycaster Game";
 
     /**
      * Panel for drawing the overhead perspective of the rays and scene.

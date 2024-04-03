@@ -12,6 +12,8 @@ public class RaycasterProjectionPanel extends JPanel {
      * Overhead panel to access the generated rays.
      */
     private final RaycasterPanel RAYCASTER_PANEL;
+    private final Color myColor = new Color(111, 67, 188);
+
 
     public RaycasterProjectionPanel(final RaycasterRunner raycasterRunner, final RaycasterPanel raycasterPanel) {
         this.RUNNER = raycasterRunner;
@@ -26,7 +28,7 @@ public class RaycasterProjectionPanel extends JPanel {
     public void paintComponent(final Graphics g) {
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g;
-        g2d.setColor(Color.BLUE);
+        g2d.setColor(myColor);
         g2d.fillRect(0, 0, this.getWidth(), this.getHeight());
     }
 }
