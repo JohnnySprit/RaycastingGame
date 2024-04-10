@@ -7,4 +7,6 @@ public final class CameraState {
     public static final int LEFT_TURN = 4;
     public static final int RIGHT_TURN = 8;
 
+    // still working on this
+
 }
