@@ -7,6 +7,9 @@ public final class CameraState {
     public static final int LEFT_TURN = 4;
     public static final int RIGHT_TURN = 8;
 
-    // still working on this
-
+    private CameraState() {
+    }
+    public static boolean isFlagEnabled(final int flag, final int mask) {
+        return (flag & mask) != 0;
+    }
 }
