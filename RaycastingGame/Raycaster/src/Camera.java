@@ -11,5 +11,8 @@ public class Camera {
         this.y = y;
         this.RayObjects = RayObjects;
         this.angle = 0;
+        this.state = CameraState.STANDSTILL;
     }
+
+    public void update()
 }
