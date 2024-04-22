@@ -59,8 +59,6 @@ public final class RaycasterRunner extends SwingApplication {
         this.setVisible(true);
         this.RAYCASTER_PANEL.requestFocus(true);
         this.start();
-        Camera camera = new Camera(0.0,0.0);
-        this.RAYCASTER_PANEL.setCamera(camera);
     }
 
     public static void main(final String[] args) {

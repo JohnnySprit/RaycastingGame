@@ -1,11 +1,12 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.awt.geom.Ellipse2D;
 import java.awt.geom.Point2D;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Camera extends JPanel {
+public class Camera {
     private double x;
     private double y;
     private List<Ray> rays;
@@ -20,14 +21,6 @@ public class Camera extends JPanel {
         this.angle = 0;
         this.distance = 1280; // Setting default maximum distance
         this.cameraMotionListener = new CameraMotionListener();
-        this.addKeyListener(new CameraMovementListener());
-        addFocusListener(new FocusAdapter() {
-            @Override
-            public void focusGained(FocusEvent e) {
-                requestFocusInWindow();
-            }
-        });
-        this.setFocusable(true); // Ensure the panel can receive key events
     }
 
     public void updatePosition(double x, double y) {
@@ -135,11 +128,18 @@ public class Camera extends JPanel {
         }
     }
 
-    public void paintComponent(Graphics g) {
-        super.paintComponent(g);
-        Graphics2D g2 = (Graphics2D) g;
+    public double getX() {
+        return x;
+    }
 
+    public double getY() {
+        return y;
+    }
+
+    public void drawCamera(Graphics2D g2d) {
+        g2d.setColor(Color.YELLOW);
+        g2d.fill(new Ellipse2D.Double(x, y, 10, 10));
         // Draw rays
-        drawRays(g2);
+        drawRays(g2d);
     }
 }

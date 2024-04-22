@@ -29,7 +29,9 @@ public final class RaycasterPanel extends JPanel {
         this.setPreferredSize(new Dimension(this.RUNNER.getWidth() / 2, this.RUNNER.getHeight()));
         this.RESOLUTION = 500;
         this.requestFocusInWindow(true);
-
+        this.camera = new Camera(0, 0);
+        this.addMouseMotionListener(this.camera.getCameraMotionListener());
+        this.addKeyListener(this.camera.getCameraMovementListener());
         OuterWalls = new RectangleObject[4];
         InnerWalls = new RectangleObject[4];
         OuterWalls[0] = new RectangleObject(0, 0, 25, 640, Color.BLACK);
@@ -72,5 +74,7 @@ public final class RaycasterPanel extends JPanel {
         g2d.setColor(myColor);
         g2d.fillRect(0, 0, this.getWidth(), this.getHeight());
         drawEnvironment(g2d);
+        camera.drawCamera(g2d);
+        System.out.printf("%f %f\n", camera.getX(), camera.getY());
     }
 }

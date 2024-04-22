@@ -14,7 +14,7 @@ public class RaycasterProjectionPanel extends JPanel {
         this.RAYCASTER_PANEL = raycasterPanel;
     }
 
-    public void project(Graphics2D g2d) {
+    private void project(Graphics2D g2d) {
         Camera camera = this.RAYCASTER_PANEL.getCamera();
         if (camera != null) {
             List<Ray> rays = camera.getRays();
