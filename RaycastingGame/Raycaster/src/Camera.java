@@ -142,4 +142,4 @@ public class Camera extends JPanel {
         // Draw rays
         drawRays(g2);
     }
-
+}
