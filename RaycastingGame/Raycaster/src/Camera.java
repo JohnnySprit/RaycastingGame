@@ -65,7 +65,14 @@ public class Camera {
         @Override
         public void keyPressed(KeyEvent e) {
             int keyCode = e.getKeyCode();
-            if (keyCode == KeyEvent.VK_A) {
+            if (keyCode == KeyEvent.VK_LEFT) {
+                angle-=1;
+                setAngle(angle);
+            }else if(keyCode==KeyEvent.VK_RIGHT){
+                angle+=1;
+                setAngle(angle);
+            }
+            else if (keyCode == KeyEvent.VK_A) {
                 // Move camera left
                 x -= moveStep * Math.cos(Math.toRadians(angle));
                 y -= moveStep * Math.sin(Math.toRadians(angle));
