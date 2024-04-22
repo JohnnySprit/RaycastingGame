@@ -23,7 +23,7 @@ public class Ray extends Line2D.Double {
     }
 
     public void drawRay(Graphics2D g2) {
-        g2.setColor(java.awt.Color.WHITE);
+        g2.setColor(Color.MAGENTA);
         g2.draw(this);
     }
 }

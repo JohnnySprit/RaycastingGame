@@ -75,11 +75,11 @@ public class Camera {
             else if (keyCode == KeyEvent.VK_A) {
                 // Move camera left
                 x -= moveStep * Math.cos(Math.toRadians(angle));
-                y -= moveStep * Math.sin(Math.toRadians(angle));
+
             } else if (keyCode == KeyEvent.VK_D) {
                 // Move camera right
                 x += moveStep * Math.cos(Math.toRadians(angle));
-                y += moveStep * Math.sin(Math.toRadians(angle));
+               
             }
             else if (keyCode == KeyEvent.VK_W) {
             // Move camera up
