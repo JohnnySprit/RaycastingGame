@@ -6,6 +6,7 @@ import java.awt.geom.Point2D;
 import java.util.ArrayList;
 import java.util.List;
 
+// Camera class representing a camera in a 2D environment
 public class Camera {
     private double x;
     private double y;
@@ -13,7 +14,8 @@ public class Camera {
     private double angle;
     private double distance; // Maximum distance for the rays
     private CameraMotionListener cameraMotionListener;
-
+    
+    // Constructor for Camera class
     public Camera(double x, double y) {
         this.x = x;
         this.y = y;
@@ -22,28 +24,34 @@ public class Camera {
         this.distance = 1280; // Setting default maximum distance
         this.cameraMotionListener = new CameraMotionListener();
     }
-
+    
+    // Update the position of the camera
     public void updatePosition(double x, double y) {
         this.x = x;
         this.y = y;
     }
-
+    
+    // Get the list of rays emitted from the camera
     public List<Ray> getRays() {
         return rays;
     }
-
+    
+    // Get the angle of the camera
     public double getAngle() {
         return angle;
     }
-
+    
+    // Set the angle of the camera
     public void setAngle(double angle) {
         this.angle = angle;
     }
-
+    
+    // Get the camera motion listener
     public CameraMotionListener getCameraMotionListener() {
         return cameraMotionListener;
     }
-
+    
+    // Inner class for handling camera motion based on mouse movement
     private class CameraMotionListener extends MouseAdapter {
         @Override
         public void mouseMoved(MouseEvent e) {
@@ -51,16 +59,19 @@ public class Camera {
             y = e.getY();
         }
     }
-
+    
+    // Set the maximum distance for the rays
     public void setDistance(double distance) {
         this.distance = distance;
     }
-
+    
+    // Get the maximum distance for the rays
     public double getDistance() {
         return distance;
     }
     private double moveStep = 5.0; // Amount to move when arrow keys are pressed
-
+    
+    // Inner class for handling camera movement based on key presses
     private class CameraMovementListener extends KeyAdapter {
         @Override
         public void keyPressed(KeyEvent e) {
@@ -139,20 +150,25 @@ public class Camera {
             rays.add(ray);
         }
     }
+    
+    // Method to draw the rays emitted from the camera
     public void drawRays(Graphics2D g2) {
         for (Ray ray : rays) {
             ray.drawRay(g2);
         }
     }
-
+    
+    // Get the x-coordinate of the camera
     public double getX() {
         return x;
     }
-
+    
+    // Get the y-coordinate of the camera
     public double getY() {
         return y;
     }
-
+    
+    // Method to draw the camera as a yellow circle and its emitted rays
     public void drawCamera(Graphics2D g2d) {
         g2d.setColor(Color.YELLOW);
         g2d.fill(new Ellipse2D.Double(x, y, 10, 10));
