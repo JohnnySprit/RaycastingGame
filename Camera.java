@@ -6,7 +6,6 @@ import java.awt.geom.Point2D;
 import java.util.ArrayList;
 import java.util.List;
 
-// Camera class representing a camera in a 2D environment
 public class Camera {
     private double x;
     private double y;
