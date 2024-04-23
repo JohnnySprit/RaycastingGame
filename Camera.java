@@ -74,22 +74,22 @@ public class Camera {
             }
             else if (keyCode == KeyEvent.VK_A) {
                 // Move camera left
-                x -= moveStep * Math.cos(Math.toRadians(angle));
-                y -= moveStep * Math.sin(Math.toRadians(angle));
+                x -= moveStep;
+
             } else if (keyCode == KeyEvent.VK_D) {
                 // Move camera right
-                x += moveStep * Math.cos(Math.toRadians(angle));
-                y += moveStep * Math.sin(Math.toRadians(angle));
+                x += moveStep;
+
             }
             else if (keyCode == KeyEvent.VK_W) {
             // Move camera up
 
-                y -= moveStep * Math.cos(Math.toRadians(angle));
+                y -= moveStep;
 
         }
             else if (keyCode == KeyEvent.VK_S){
                 //move camera down
-                y+=moveStep*Math.cos(Math.toRadians(angle));
+                y+=moveStep;
             }
         }
     }
@@ -155,7 +155,7 @@ public class Camera {
 
     public void drawCamera(Graphics2D g2d) {
         g2d.setColor(Color.YELLOW);
-        g2d.fill(new Ellipse2D.Double(x, y, 10, 10));
+        g2d.fill(new Ellipse2D.Double(x-5, y-5, 10, 10));
         // Draw rays
         drawRays(g2d);
     }
