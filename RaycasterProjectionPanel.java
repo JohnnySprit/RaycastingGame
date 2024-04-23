@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.geom.Line2D;
 import java.util.List;
 
 public class RaycasterProjectionPanel extends JPanel {
@@ -19,9 +20,30 @@ public class RaycasterProjectionPanel extends JPanel {
         if (camera != null) {
             List<Ray> rays = camera.getRays();
             if (rays != null) {
+                int projectionWidth = getWidth(); // Width of the projection panel
+                int projectionHeight = getHeight(); // Height of the projection panel
+                double delta = 40.0; // Constant size for appropriate wall scaling
+
                 for (Ray ray : rays) {
-                    g2d.setColor(Color.LIGHT_GRAY);
-                    g2d.draw(ray);
+                    // Calculate the distance from the camera to the wall
+                    double rayDist = ray.getP1().distance(ray.getP2());
+
+                    // Calculate the height of the wall based on distance
+                    double wallHeight = projectionHeight * delta / rayDist;
+
+                    // Calculate the vertical position of the wall on the projection panel
+                    double wallY = projectionHeight / 2 - wallHeight / 2;
+
+                    // Calculate the width of the wall segment
+                    double wallWidth = projectionWidth / rays.size();
+
+                    // Calculate the left and right coordinates of the wall segment
+                    double leftX = rays.indexOf(ray) * wallWidth;
+                    double rightX = leftX + wallWidth;
+
+                    // Draw the wall segment
+                    g2d.setColor(Color.GRAY);
+                    g2d.draw(new Line2D.Double(leftX, wallY, rightX, wallY + wallHeight));
                 }
             }
         }

@@ -16,6 +16,21 @@ public class RectangleObject implements Drawable {
         this.height = height;
         this.color = color;
     }
+    public double getX() {
+        return x;
+    }
+
+    public double getY() {
+        return y;
+    }
+
+    public double getWidth() {
+        return width;
+    }
+
+    public double getHeight() {
+        return height;
+    }
     @Override
     public void drawObject(Graphics2D g2d) {
         g2d.setColor(color);
