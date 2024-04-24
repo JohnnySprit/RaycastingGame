@@ -49,17 +49,17 @@ public final class RaycasterPanel extends JPanel {
         walls.add(new RectangleObject(0.0, 615.0, 640.0, 25.0, Color.BLACK));
 
         // Add inner walls with random positions and sizes
-        for (int i = 0; i < 5; i++) { // Adjust the number of inner walls as needed
+        for (int i = 0; i < 5; i++) { // Adjust the number of inner walls as needed (Step 4)
             double x, y, width, height;
             boolean overlap;
             do {
                 // Generate random position and size
-                x = RaycasterUtils.randomDouble(50, 550); // Adjust range to avoid edges
-                y = RaycasterUtils.randomDouble(50, 550); // Adjust range to avoid edges
-                width = 64; // Adjust range for width
-                height = 64; // Adjust range for height
+                x = RaycasterUtils.randomDouble(50, 550);
+                y = RaycasterUtils.randomDouble(50, 550);
+                width = 64;
+                height = 64;
 
-                // Check for overlap with existing walls
+                // This checks for overlap with existing walls
                 overlap = false;
                 for (RectangleObject wall : walls) {
                     if (wall != null && rectanglesOverlap(x, y, width, height, wall.getX(), wall.getY(), wall.getWidth(), wall.getHeight())) {
@@ -69,7 +69,7 @@ public final class RaycasterPanel extends JPanel {
                 }
             } while (overlap);
 
-            Color color = Color.BLACK; // Color for wall texture
+            Color color = Color.BLACK; // Color for the wall texture
             walls.add(new RectangleObject(x, y, width, height, color));
         }
     }
