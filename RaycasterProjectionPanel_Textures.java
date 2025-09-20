@@ -1,3 +1,5 @@
+package RaycastingGame;
+
 public class RaycasterProjectionPanel_Textures {
 /*
     private BufferedImage wallTexture; // Texture for the walls

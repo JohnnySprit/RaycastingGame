@@ -1,4 +1,9 @@
+package RaycastingGame;
+
 import java.awt.*;
+import java.util.Timer;
+
+import static com.sun.java.accessibility.util.AWTEventMonitor.addKeyListener;
 
 /**
  * RaycasterRunner is the driver class where all JPanels and components
@@ -60,10 +65,10 @@ public final class RaycasterRunner extends SwingApplication {
         this.RAYCASTER_PANEL.requestFocus(true);
         this.start();
     }
-
     public static void main(final String[] args) {
         RaycasterRunner runner = new RaycasterRunner(WIDTH, HEIGHT, TARGET_FPS, TITLE);
         runner.run();
+
     }
 
     @Override
